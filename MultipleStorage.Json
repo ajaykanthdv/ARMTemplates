@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+        "storageaccountname": {
+            "type": "string",
+
+            "defaultValue": "demoajaystorage",
+
+
+            "metadata": {
+                "description": "description"
+            }
+        },
+        
+
+        "count": {
+            "type": "int",
+
+            
+            "metadata": {
+                "description": "description"
+            }
+        }
+
+        
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+
+        {
+            "name": "[concat(parameters('storageaccountname'),copyIndex())]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-04-01",
+
+            
+            "copy": {
+
+                "name": "standard loop",
+            "count": "[parameters('count')]"
+            },
+
+            "tags": {
+                "displayName": "storageaccount1",
+                "team": "Development",
+                "owner": "xyzoputm.com"
+            },
+            "location": " WEST US",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_GRS",
+                "tier": "Standard"
+            }
+        }
+
+    ],
+    "outputs": {}
+}

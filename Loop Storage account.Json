@@ -1,0 +1,53 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Storageaccountname": {
+            "type": "string",
+            "defaultValue": "ajay1",
+            "metadata": {
+                "description": "description"
+            }
+        },
+
+        "Count": {
+            "type": "int",
+            "metadata": {
+                "description": "description"
+            }
+        }
+    },
+    "functions": [
+        
+    ],
+    "variables": {},
+    "resources": [
+        {
+
+          "name": "[concat(parameters('Storageaccountname'),copyIndex())]",
+          "type": "Microsoft.Storage/storageAccounts",
+          "apiVersion": "2021-09-01",
+          "copy": {
+              "name": "Standard Loop",
+              "count": "[parameters('Count')]"
+
+          },
+
+          "tags": {
+              "displayname": "Storageaccount1",
+              "team": "Development",
+              "owner": "Optum"
+
+          },
+          "location": "East US",
+          "kind": "StorageV2",
+          "sku": {
+              "name": "Standard_LRS",
+              "tier": "Standard"
+          }
+
+        }
+        
+    ],
+    "outputs": {}
+}
