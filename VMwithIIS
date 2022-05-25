@@ -1,0 +1,3 @@
+how to create vm with iis pre installed
+
+https://github.com/Azure/azure-quickstart-templates/tree/3f6f426c8b31ff13ab20fd3a8cc70a7f27de7f85/demos/dsc-extension-iis-server-windows-vm
